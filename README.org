@@ -7,7 +7,7 @@ For when you want:
 This library allows for taking the final result binary, and just concatenating the configuration to the end:
 
 #+BEGIN_SRC bash
-cat binary <(echo -n "CATCONF") conf > confedbinary
+cat target/debug/binary <(echo -n "CATCONF") conf > confedbinary
 #+END_SRC
 
 Great, but how to get the configuration back out and use it in the code? catconf!
@@ -17,7 +17,7 @@ It's use is pretty simple:
 #+BEGIN_SRC rust
 use catconf::ConfReaderOptions;
 
-let conf_reader = ConfReaderOptions::new("CATCONF").read_from_exe()?;
+let conf_reader = ConfReaderOptions::new(b"CATCONF".to_vec()).read_from_exe()?;
 #+END_SRC
 
-This returns a ~Vec<u8>~ which can be transformed further, by converting to UTF-8 and combined with Serde, decompressing with Zlib, etc.
+This returns a ~Vec<u8>~ which can be transformed further, by converting to UTF-8 and combined with Serde, decompressing with zlib, etc.
