@@ -1,6 +1,6 @@
 [package]
 name = "catconf"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
 authors = [ "Andrew Rioux <rioux.d.andrew@gmail.com>" ]
 description = "Allows for reading from the executing binary in order to pull configuration"
